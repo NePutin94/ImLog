@@ -1,7 +1,3 @@
-//
-// Created by NePutin on 6/30/2021.
-//
-
 #include "../include/ConsoleLog.h"
 
 #include <cmath>
@@ -9,6 +5,7 @@
 #include <fstream>
 #include <algorithm>
 #include <mutex>
+#include <utility>
 #include <imgui.h>
 using namespace palka;
 
@@ -84,7 +81,7 @@ void palka::Console::addLog(Log log, skip_unique_check skip)
 
 void palka::Console::addLog(std::string s, logType t)
 {
-    addLog(Log(s, t));
+    addLog(Log(std::move(s), t));
 }
 
 void Console::saveLog(std::string_view path)
@@ -93,8 +90,8 @@ void Console::saveLog(std::string_view path)
     out.open(path.data());
     if(out.is_open())
     {
-        for(auto log: Buffer)
-            out << log.text << std::endl;
+        for(const auto& log: Buffer)
+            out << log.text << "\n";
     }
 }
 

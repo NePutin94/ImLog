@@ -1,7 +1,3 @@
-//
-// Created by NePutin on 6/30/2021.
-//
-
 #ifndef PALKA_CONSOLELOG_H
 #define PALKA_CONSOLELOG_H
 
@@ -20,8 +16,6 @@ namespace palka
                 {
                         "all", "error", "info", "fatal", "system", "script", "message"
                 };
-
-
     }
 
     class Console
